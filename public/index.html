@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KR | College Placement Management</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="topbar">
+  <a class="brand" href="#"><span>KR</span> Placement Portal</a>
+  <nav><a href="#dashboard">Dashboard</a><a href="#students">Students</a><a href="#companies">Companies</a><a href="#drives">Drives</a><a href="#applications">Applications</a></nav>
+</header>
+<section class="hero">
+  <div class="hero-content"><p class="eyebrow">CAREER • OPPORTUNITY • SUCCESS</p><h1>Your career journey<br><span>starts here.</span></h1>
+  <p>One place to manage student profiles, company recruitment drives and placement progress.</p><a class="button" href="#dashboard">Explore Dashboard</a></div>
+  <div class="hero-card"><div class="hero-icon">✦</div><h3>Build your future</h3><p>Discover opportunities. Apply with confidence. Track every step.</p><div class="hero-line"></div><small>KR COLLEGE PLACEMENT CELL</small></div>
+</section>
+<main>
+<section id="dashboard" class="section">
+  <div class="section-heading"><div><p class="eyebrow">OVERVIEW</p><h2>Placement Dashboard</h2></div><button class="button secondary" onclick="loadAll()">↻ Refresh</button></div>
+  <div class="stats">
+    <article class="stat"><span>Registered Students</span><strong id="studentCount">0</strong><small>Student profiles</small></article>
+    <article class="stat"><span>Registered Companies</span><strong id="companyCount">0</strong><small>Recruiting partners</small></article>
+    <article class="stat"><span>Recruitment Drives</span><strong id="driveCount">0</strong><small>Open opportunities</small></article>
+    <article class="stat"><span>Applications</span><strong id="applicationCount">0</strong><small>Submitted applications</small></article>
+  </div>
+</section>
+<section id="students" class="section">
+  <div class="section-heading"><div><p class="eyebrow">STUDENT RECORDS</p><h2>Manage Students</h2></div></div>
+  <div class="panel">
+    <form id="studentForm" class="form-grid">
+      <input name="name" placeholder="Student name" required>
+      <input name="roll_no" placeholder="Roll number" required>
+      <input name="branch" placeholder="Branch (e.g. CSE)" required>
+      <input name="cgpa" type="number" min="0" max="10" step="0.01" placeholder="CGPA (0–10)" required>
+      <input name="email" type="email" placeholder="Email address" required>
+      <button class="button" type="submit">+ Add Student</button>
+    </form>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Name</th><th>Roll No</th><th>Branch</th><th>CGPA</th><th>Email</th><th>Action</th></tr></thead><tbody id="studentsTable"></tbody></table></div>
+  </div>
+</section>
+<section id="companies" class="section">
+  <div class="section-heading"><div><p class="eyebrow">RECRUITMENT PARTNERS</p><h2>Register Companies</h2></div></div>
+  <div class="panel">
+    <form id="companyForm" class="form-grid">
+      <input name="company_name" placeholder="Company name" required>
+      <input name="website" type="url" placeholder="Company website (optional)">
+      <input name="hr_email" type="email" placeholder="HR email" required>
+      <button class="button" type="submit">+ Register Company</button>
+    </form>
+    <div class="table-wrap"><table><thead><tr><th>ID</th><th>Company</th><th>Website</th><th>HR Email</th><th>Registered</th></tr></thead><tbody id="companiesTable"></tbody></table></div>
+  </div>
+</section>
+<section id="drives" class="section">
+  <div class="section-heading"><div><p class="eyebrow">CAREER OPPORTUNITIES</p><h2>Recruitment Drives</h2></div></div>
+  <div class="panel">
+    <form id="jobForm" class="form-grid">
+      <select name="company_id" id="companySelect" required><option value="">Select company</option></select>
+      <input name="job_role" placeholder="Job role" required>
+      <input name="min_cgpa" type="number" min="0" max="10" step="0.01" placeholder="Minimum CGPA" required>
+      <input name="eligible_branch" placeholder="Eligible branches (CSE,ECE or All)" required>
+      <input name="package_lpa" type="number" min="0" step="0.01" placeholder="Package in LPA (optional)">
+      <input name="drive_date" type="date" required>
+      <input name="description" placeholder="Job description (optional)">
+      <button class="button" type="submit">+ Create Drive</button>
+    </form>
+    <div class="table-wrap"><table><thead><tr><th>Company</th><th>Role</th><th>Min CGPA</th><th>Eligible Branch</th><th>Package</th><th>Drive Date</th></tr></thead><tbody id="jobsTable"></tbody></table></div>
+  </div>
+</section>
+<section id="applications" class="section">
+  <div class="section-heading"><div><p class="eyebrow">APPLICATION TRACKER</p><h2>Student Applications</h2></div></div>
+  <div class="panel">
+    <form id="applicationForm" class="form-grid">
+      <select name="student_id" id="applicationStudent" required><option value="">Select student</option></select>
+      <select name="job_id" id="applicationJob" required><option value="">Select recruitment drive</option></select>
+      <button class="button" type="submit">Submit Application</button>
+    </form>
+    <p class="hint">Eligibility is checked automatically using CGPA and branch.</p>
+    <div class="table-wrap"><table><thead><tr><th>Application ID</th><th>Student</th><th>Roll No</th><th>Company</th><th>Job Role</th><th>Applied On</th><th>Placement Status</th></tr></thead><tbody id="applicationsTable"></tbody></table></div>
+  </div>
+</section>
+<div id="toast" role="status" aria-live="polite"></div>
+</main>
+<footer><strong>KR Placement Portal</strong><span>College Placement Management System • Mini Project</span></footer>
+<script src="script.js"></script>
+</body></html>
